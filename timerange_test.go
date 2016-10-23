@@ -9,7 +9,16 @@ import (
 )
 
 func TestTimerange(t *testing.T) {
-	Convey("", t, func() {
+	Convey("NewTimerange", t, func() {
+		Convey("It parses and returns all timestamps between given range of timestamps", func() {
+			values, err := Parse("2016/10/22..2016/10/24")
+			So(err, ShouldBeNil)
+
+			So(len(values), ShouldEqual, 3)
+		})
+	})
+
+	Convey("NewTimerange", t, func() {
 		Convey("It implements flag.Value interface", func() {
 			var t Timerange
 			flag.Var(&t, "time", "")

@@ -23,6 +23,15 @@ type Timerange struct {
 	RangeSeparator string
 }
 
+func Parse(value string) ([]time.Time, error) {
+	t := NewTimerange()
+	if err := t.Set(value); err != nil {
+		return nil, err
+	}
+
+	return t.TimeValues, nil
+}
+
 func NewTimerange() *Timerange {
 	return &Timerange{
 		TimeValues:     []time.Time{},
