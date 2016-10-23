@@ -35,11 +35,11 @@ The default layout for parsing time and range seperator are: `2006/01/02` and
 
 ```go
 t := timerange.Timerange{
-TimeValues :    []time.Time{},
-           TimeLayout :    "2016-01-02",
-           RangeSeparator: "..",
+  TimeValues:    []time.Time{},
+  TimeLayout:    "2016-01-02",
+  RangeSeparator: "..",
 }
-flag.Var(&t, "timestamp", "Pass single or range of timestamps")
+flag.Var(&t, "<flag name>", "<description>")
 ```
 
 ## Test
