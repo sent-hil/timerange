@@ -9,7 +9,7 @@ import (
 )
 
 func TestTimerange(t *testing.T) {
-	Convey("NewTimerange", t, func() {
+	Convey("Parse", t, func() {
 		Convey("It parses and returns all timestamps between given range of timestamps", func() {
 			values, err := Parse("2016/10/22..2016/10/24")
 			So(err, ShouldBeNil)
