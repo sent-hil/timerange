@@ -10,6 +10,7 @@ import (
 var (
 	ErrValueIsEmpty = errors.New("ERROR: value is empty.")
 	ErrInvalidRange = errors.New("ERROR: values in time range are invalid.")
+	ErrDateOrdering = errors.New("ERROR: start date is after end date")
 )
 
 var (
@@ -100,10 +101,7 @@ func (t *Timerange) parseRangeIntoTimeValues(rangeValue string) (timeValues []ti
 
 	duration := startDate.Sub(endDate).Hours()
 	if duration >= 0 {
-		return nil, fmt.Errorf(
-			"Expected timestamp range start date: '%s' to be before end date: '%s'",
-			startDate, endDate,
-		)
+		return nil, ErrDateOrdering
 	}
 
 	durationInDays := (duration / 24) * -1

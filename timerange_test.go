@@ -69,9 +69,7 @@ func TestTimerange(t *testing.T) {
 
 		Convey("It returns error start date is after end date", func() {
 			t := NewTimerange()
-			err := t.Set("2016/10/24..2016/10/21")
-
-			So(err, ShouldNotBeNil)
+			So(t.Set("2016/10/24..2016/10/21"), ShouldEqual, ErrDateOrdering)
 		})
 
 		Convey("It parses and stores all timestamps between given range of timestamps", func() {
